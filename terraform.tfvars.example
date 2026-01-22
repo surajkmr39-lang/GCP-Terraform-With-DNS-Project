@@ -1,0 +1,60 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and update with your values
+
+# GCP Project Configuration
+project_id = "strange-passage-483616-i1"
+region     = "us-central1"
+zone       = "us-central1-a"
+
+# Network Configuration
+network_name = "shared-vpc-network"
+
+# DNS Configuration
+private_zone_name = "private-zone"
+private_dns_name  = "internal.example.com."
+public_zone_name  = "public-zone"
+public_dns_name   = "example.com."
+
+# Environment
+environment = "lab"
+
+# Labels
+labels = {
+  environment = "lab"
+  project     = "dns-lab"
+  managed-by  = "terraform"
+  owner       = "your-name"
+}
+
+# Subnets (optional - will use defaults if not specified)
+subnets = [
+  {
+    name          = "subnet-web"
+    ip_cidr_range = "10.0.1.0/24"
+    region        = "us-central1"
+    description   = "Web tier subnet"
+  },
+  {
+    name          = "subnet-app"
+    ip_cidr_range = "10.0.2.0/24"
+    region        = "us-central1"
+    description   = "Application tier subnet"
+  },
+  {
+    name          = "subnet-db"
+    ip_cidr_range = "10.0.3.0/24"
+    region        = "us-central1"
+    description   = "Database tier subnet"
+  }
+]
+
+# Instance Configuration
+web_instance_count = 2
+app_instance_count = 2
+db_instance_count  = 1
+
+# SSH Configuration (optional - leave empty to disable SSH key)
+ssh_public_key = ""  # Add your SSH public key here
+
+# Bastion Host
+create_bastion = true
